@@ -5,6 +5,47 @@ galaxy_info:
 
   min_ansible_version: 2.0 
 
+  platforms:
+  - name: OpenBSD
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: MacOSX
+    versions:
+    - all
+  - name: GenericBSD
+    versions:
+    - all
+  - name: GenericLinux
+    versions:
+    - all
+  - name: Amazon
+    versions:
+    - all
+  - name: ArchLinux
+    versions:
+    - all
+  - name: FreeBSD
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: EL
+    versions:
+    - all
+  - name: opensuse
+    versions:
+    - all
+  - name: SLES
+    versions:
+    - all
+
   galaxy_tags:
     - cfndsl
     - cloudformation
