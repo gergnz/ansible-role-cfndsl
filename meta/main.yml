@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Greg Cockburn
+  description: Compile CFNDSL into Cloudformation json or yaml
+  license: MIT
+
+  min_ansible_version: 2.0 
+
+  galaxy_tags:
+    - cfndsl
+    - cloudformation
+    - aws
+    - amazon
+    - cfn
+    - dsl
+
+dependencies: []
