@@ -96,12 +96,14 @@ EXAMPLES = '''
     defines:
       quename: myqueue
 '''
+from pprint import pprint
 from subprocess import Popen, PIPE
 from ansible.plugins.action import ActionBase
 from ansible.errors import AnsibleError
 from ansible.module_utils._text import to_native, to_text
 from ansible.utils.boolean import boolean
 from ansible.utils.hashing import checksum_s
+from ansible.parsing.yaml.objects import AnsibleUnicode
 
 class ActionModule(ActionBase):
     ''' Process cfndsl files '''
@@ -168,19 +170,19 @@ class ActionModule(ActionBase):
             return result
 
         if defines is not None:
-            if type(defines) is list:
+            if type(defines) is dict:
                 for key,value in defines.iteritems():
                     cmd.append("-D")
-                    cmd.append(key+"="+value)
+                    cmd.append(str(key)+"="+str(value))
             else:
                 result['failed'] = True
-                result['msg'] = "defines must be list"
+                result['msg'] = "defines must be a dict"
                 return result
 
         if yaml is not None:
-            if type(yaml) is str:
+            if type(yaml) is AnsibleUnicode:
                 cmd.append("-y")
-                cmd.append(yaml)
+                cmd.append(str(yaml))
             elif type(yaml) is list:
                 for y in yaml:
                     cmd.append("-y")
@@ -193,7 +195,7 @@ class ActionModule(ActionBase):
         if ruby is not None:
             if type(ruby) is str:
                 cmd.append("-r")
-                cmd.append(ruby)
+                cmd.append(str(ruby))
             elif type(ruby) is list:
                 for r in ruby:
                     cmd.append("-r")
@@ -206,7 +208,7 @@ class ActionModule(ActionBase):
         if json is not None:
             if type(json) is str:
                 cmd.append("-j")
-                cmd.append(json)
+                cmd.append(str(json))
             elif type(json) is list:
                 for j in json:
                     cmd.append("-j")
