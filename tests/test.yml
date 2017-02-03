@@ -1,5 +1,28 @@
 ---
 - hosts: localhost
+  connection: local
   remote_user: root
   roles:
-    - cfndsl
+    - ansible-role-cfndsl
+  tasks:
+    - name: simple
+      cfndsl:
+        dest: /tmp/simple.json
+        src: tests/cfndsl/sqs.rb
+    - name: yaml list
+      cfndsl:
+        dest: /tmp/yamllist.json
+        src: tests/cfndsl/sqs.rb
+        yaml:
+          - tests/external_parameters/sqs.yml
+    - name: yaml string
+      cfndsl:
+        dest: /tmp/yamlstring.json
+        src: tests/cfndsl/sqs.rb
+        yaml: tests/external_parameters/sqs.yml
+    - name: defines
+      cfndsl:
+        dest: /tmp/defines.json
+        src: tests/cfndsl/sqs.rb
+        defines:
+          delay: 9
