@@ -140,7 +140,7 @@ class ActionModule(ActionBase):
         cmd.append("cfndsl")
 
         if pretty is True:
-            cmd.append(" -p")
+            cmd.append("-p")
 
         if disable_binding is True:
             cmd.append("-b")
